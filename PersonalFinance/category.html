@@ -27,16 +27,13 @@
 	margin: 5% 10%;
 	border-radius: 5%;
 }
+a:active {
+	color: black;
+}
 </style>
 <body>
 	<div id="container">
 		<div id="main">
-			<a href=""><div class="category">衣</div></a>
-			<a href=""><div class="category">食</div></a>
-			<a href=""><div class="category">住</div></a>
-			<a href=""><div class="category">行</div></a>
-			<a href=""><div class="category">玩</div></a>
-			<a href=""><div class="category">其他</div></a>
 			<a href=""><div class="category">添加</div></a>
 		</div>
 	</div>
@@ -44,6 +41,86 @@
 </body>
 <script type="text/javascript" src="jquery.js"></script>
 <script>
+	function read_config() {
+		var category_conf = [
+			{
+				name:"衣",
+				sub: [
+				],
+				type: "category"
+			},{
+				name:"食",
+				sub: [
+					{"早饭": {}},
+					{"中饭": {}},
+					{"其他": {}},
+					{"添加": "default"}
+				],
+				type: "category"
+			},{
+				name:"住",
+				sub: [
+					{"早饭": {}},
+					{"中饭": {}},
+					{"其他": {}},
+					{"添加": "default"}
+				],
+				type: "category"
+			},{
+				name:"行",
+				sub: [
+					{"早饭": {}},
+					{"中饭": {}},
+					{"其他": {}},
+					{"添加": "default"}
+				],
+				type: "category"
+			},{
+				name:"玩",
+				sub: [
+					{"早饭": {}},
+					{"中饭": {}},
+					{"其他": {}},
+					{"添加": "default"}
+				],
+				type: "category"
+			},{
+				name:"其他",
+				sub: [
+					{"早饭": {}},
+					{"中饭": {}},
+					{"其他": {}},
+					{"添加": "default"}
+				],
+				type: "category"
+			}
+		];
+		return category_conf;
+	}
+	function create_category_button(name) {
+		var btn = $("<a></a>");
+		btn.attr("href", "#");
+		var div = $("<div></div>");
+		div.attr("class", "category");
+		div[0].innerHTML = name;
+		btn.append(div);
+		return btn;
+	}
+
+	var category_conf = read_config();
+
+	for (var i = category_conf.length - 1; i >= 0; i--) {
+		var category_dict= category_conf[i];
+		var name = category_dict["name"];
+		var sub_category_dict = category_dict["sub_category"];
+		var type = category_dict["type"];
+		if (type == "default") {
+			continue;
+		}
+		var btn = create_category_button(name);
+		$("#main").prepend(btn);
+	}
+	$("#main").append();
 	var line_height = $(".category")[0].clientHeight;
 	$(".category").attr("style", "line-height: " + line_height + "px");
 </script>
