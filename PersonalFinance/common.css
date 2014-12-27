@@ -1,0 +1,20 @@
+#container {
+	text-align: center;
+}
+
+#main {
+	text-align: center;
+	background: blue;
+}
+
+.category {
+	text-align: center;
+	background: yellow;
+	width: 30%;
+	height: 20%;
+	float: left;
+	margin: 5% 10%;
+}
+
+
+
